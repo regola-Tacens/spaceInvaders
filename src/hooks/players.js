@@ -47,6 +47,7 @@ export function usePlayer(){
         fetchPlayers : async function (){
                 // const players = await apiFetch('/players')
                 const players = await apiFetch('/players')
+                console.log( 'players', players)
                 dispatch({type : 'FETCHING_PLAYERS'})
                 // const players = await apiFetch('/players')
                 dispatch({type : 'SET_PLAYERS', payload : players})

@@ -12,15 +12,17 @@ export function Player({onSubmit, score, deletePlayer, setScore, setGameOver, pl
         const data = Object.fromEntries(new FormData(form))
         data.score = score
 
-        // find worst player
-        let lowestScore = players[0].score
-        let worstPlayer = players[0]  
-        for (let i=1; i < players.length;i++){
-            if(players[i].score < lowestScore){
-                worstPlayer = players[i]
-                lowestScore = players[i].score
-            }
-        }
+        // find worst 
+        // if (players) {
+        //     let lowestScore = players[0].score
+        //     let worstPlayer = players[0]  
+        //         for (let i=1; i < players.length;i++){
+        //             if(players[i].score < lowestScore){
+        //             worstPlayer = players[i]
+        //             lowestScore = players[i].score
+        //         }
+        //     }
+        // } 
 
 
         const insertScore = async function (){
@@ -36,20 +38,20 @@ export function Player({onSubmit, score, deletePlayer, setScore, setGameOver, pl
             } 
         }
 
-        if(players.length >3){
-            console.log('min score', lowestScore)
-            console.log('data.score', data.score)
-            console.log('worsplayer', worstPlayer)
+        insertScore()
 
-            if(data.score < lowestScore){
-                setIsNameSubmited(()=> true)
-            } else {
-                deletePlayer(worstPlayer)
-                insertScore()
-            }
-            // data.score < lowestScore ? setIsNameSubmited(()=> true) : insertScore()
+        // if(players.length >3){
+
+
+        //     if(data.score < lowestScore){
+        //         setIsNameSubmited(()=> true)
+        //     } else {
+        //         deletePlayer(worstPlayer)
+        //         insertScore()
+        //     }
+        //     // data.score < lowestScore ? setIsNameSubmited(()=> true) : insertScore()
         
-        } else if (players.length <=3)insertScore()
+        // } else if (players.length <=3)insertScore()
     }
 
     const handleClick = ()=>{
